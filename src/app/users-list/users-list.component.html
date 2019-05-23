@@ -1,0 +1,18 @@
+<h1 class="text-center">
+Users List
+</h1>
+
+<div *ngIf="isVisible">
+  <div class="text-center" *ngFor="let user of usersList | paginate: config">
+    <img src="{{user.avatar}}" alt="{{user.first_name}}">
+    {{user.first_name}}
+    &nbsp;
+    {{user.last_name}}
+    <button type="button" name="button" [routerLink]="['/user/' + user.id]">
+      More...
+    </button>
+    <hr>
+  </div>
+</div>
+
+<pagination-controls class="text-center" (pageChange)="pageChanged($event)"></pagination-controls>
